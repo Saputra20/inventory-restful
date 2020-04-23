@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controller/User')
+const auth = require('../middleware/Auth');
 
-router.get('/', userController.index);
+router.get('/', auth.auth , userController.index);
 
-router.get('/show', userController.show);
+router.get('/show/:id', userController.show);
 
 router.post('/', userController.store);
 
